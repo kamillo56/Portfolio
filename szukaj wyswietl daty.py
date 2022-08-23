@@ -11,6 +11,7 @@ driver = webdriver.Chrome(PATH)
 driver.get("https://www.techwithtim.net/")
 print(driver.title)
 
+#Searchbar
 search = driver.find_element(By.NAME, "s")
 search.send_keys("test")
 search.send_keys(Keys.RETURN)
@@ -19,7 +20,8 @@ try:
     main = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.ID, "main"))
     )
-
+    
+    #Szukanie artykułów i wyświetlenie nagłówków
     articles = main.find_elements(By.TAG_NAME, "article")
     for article in articles:
         header = article.find_element(By.CLASS_NAME, "posted-on")
